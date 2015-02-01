@@ -5,16 +5,17 @@
   </head>
   <body>
     <div id="left">
-      <img src="http://placekitten.com/g/320/261" id="photo_left" alt="photo"/>
-      <canvas id="canvas_left" class="hide"></canvas>
-    </div>
-    <div id="wrapper">
-      <div id="line"></div>
-      <video id="video"></video>
+      <canvas id="canvas_left"></canvas>
+      <div class="snapshots"></div>
     </div>
     <div id="right">
-      <img src="http://placekitten.com/g/320/261" id="photo_right" alt="photo" />
-      <canvas id="canvas_right" class="hide"></canvas>
+      <canvas id="canvas_right"></canvas>
+      <div class="snapshots"></div>
+    </div>
+    <div id="middle">
+      <div id="line"></div>
+      <video></video>
+      <div class="snapshots"></div>
     </div>
     <!-- <button id="startbutton">Take photo</button> -->
     <script src="app.js"></script>
