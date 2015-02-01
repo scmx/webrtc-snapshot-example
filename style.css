@@ -1,0 +1,33 @@
+.hide { display: none; }
+#left, #wrapper, #right {
+  width: 33%;
+  position: fixed;
+}
+#left {
+  left: 0;
+}
+#wrapper {
+  left: 33%;
+  /* width: 360px; */
+  /* height: 240px; */
+}
+#right {
+  left: 67%;
+}
+#wrapper {
+}
+/* video { */
+/*   position: relative; */
+/* } */
+#line {
+  z-index: 999;
+  position: absolute;
+  top: 0;
+  left: 160px;
+  width: 0;
+  height: 240px;
+  border-right: 1px solid red;
+}
+canvas {
+  border: 1px solid red;
+}
