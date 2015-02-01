@@ -45,11 +45,12 @@ body {
 }
 .Snapshot .Button {
   position: absolute;
+  padding: 2px 4px;
   width: 16px;
   height: 16px;
-  font-family: monospace;
-  font-weight: bold;
-  text-align: center;
+  font-family: sans-serif;
+}
+.Snapshot:hover .Button {
 }
 .Snapshot img {
   width: 320px;
@@ -59,17 +60,42 @@ body {
   cursor: pointer;
 }
 .CloseButton {
-  top: 4px;
-  left: 4px;
-  background: red;
-  color: white;
-  font-size: 16px;
-  border-radius: 100%;
+  top: 0;
+  left: 0;
+  color: red;
+  min-width: 80px;
+  font-weight: bold;
+  text-align: left;
 }
-.SaveButton {
+.CloseButton:after {
+  content: 'Remove';
+  display: none;
+  font-weight: normal;
+}
+.CloseButton:hover:after {
+  display: block;
+  position: absolute;
   top: 4px;
-  right: 4px;
+  left: 20px;
+}
+
+.SaveButton {
+  top: 0;
+  right: 0;
+  min-width: 90px;
   text-decoration: none;
+  text-align: right;
+  color: gold;
+}
+.SaveButton:after {
+  content: 'Download';
+  display: none;
+}
+.SaveButton:hover:after {
+  display: block;
+  position: absolute;
+  top: 4px;
+  right: 20px;
 }
 canvas {
   -moz-transform: scale(-1, 1);

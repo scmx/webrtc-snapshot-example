@@ -85,7 +85,7 @@
     this.el.setAttribute('target', '_blank');
     this.el.setAttribute('download', 'snapshot.png');
     this.el.setAttribute('title', 'Click to download');
-    this.el.innerHTML = '&#128190;';
+    this.el.innerHTML = '&starf;';
     // this.el.addEventListener('click', onSave);
   }
 
