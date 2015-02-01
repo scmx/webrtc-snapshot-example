@@ -78,3 +78,15 @@ canvas {
   transform: scale(-1, 1);
   background: black;
 }
+.Github {
+  z-index: 1;
+  position: fixed;
+  top: 40px;
+  right: -60px;
+  transform: rotate(45deg);
+  padding: 4px 50px;
+  background: gold;
+  border: 1px solid white;
+  line-height: 24px;
+  font-family: monospace;
+}
