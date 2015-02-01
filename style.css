@@ -3,14 +3,17 @@ body {
   overflow-y: scroll;
   background: #eef;
 }
-.hide { display: none; }
-#left, #middle, #right {
+.Explanation {
+  padding: 10px;
+  font-size: 15pt;
+  text-align: center;
+}
+.Explanation code { color: #09cdda; }
+.Stream {
   position: relative;
   width: 33%;
   min-height: 100%;
-  /* position: fixed; */
-  /* overflow-x: hidden; */
-  /* overflow-y: scroll; */
+  margin: 0 auto;
 }
 #left {
   float: left;
@@ -18,18 +21,12 @@ body {
 }
 #middle {
   margin: 0 auto;
-  /* left: 33%; */
-  /* width: 360px; */
-  /* height: 240px; */
 }
+#middle video { display: none; }
 #right {
   float: right;
-  /* left: 67%; */
 }
-/* video { */
-/*   position: relative; */
-/* } */
-#line {
+.Line {
   z-index: 999;
   position: absolute;
   top: 0;
@@ -38,6 +35,46 @@ body {
   height: 240px;
   border-right: 1px solid red;
 }
+.SnapshotContainer {
+  position: relative;
+  width: 320px;
+  height: 240px;
+}
+.Snapshot {
+  position: relative;
+}
+.Snapshot .Button {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  font-family: monospace;
+  font-weight: bold;
+  text-align: center;
+}
+.Snapshot img {
+  width: 320px;
+  height: 240px;
+}
+.Button:hover {
+  cursor: pointer;
+}
+.CloseButton {
+  top: 4px;
+  left: 4px;
+  background: red;
+  color: white;
+  font-size: 16px;
+  border-radius: 100%;
+}
+.SaveButton {
+  top: 4px;
+  right: 4px;
+  text-decoration: none;
+}
 canvas {
-  border: 1px solid red;
+  -moz-transform: scale(-1, 1);
+  -webkit-transform: scale(-1, 1);
+  -o-transform: scale(-1, 1);
+  transform: scale(-1, 1);
+  background: black;
 }
