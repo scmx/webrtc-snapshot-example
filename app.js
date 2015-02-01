@@ -103,9 +103,7 @@
   explanation.classList.add('Explanation');
 
   if (navigator.getMedia) {
-    explanation.innerHTML = 'Position your face so that the red line ' +
-      'divides it in half. ' +
-      'Then press <code>&lt;SPACE&gt;</code> to take a snapshot';
+    explanation.innerHTML = 'You need to allow this page to use your camera';
     document.body.appendChild(explanation);
   } else {
     explanation.innerHTML = 'Sorry, your browser does not support ' +
@@ -133,6 +131,11 @@
         video.src = vendorURL.createObjectURL(stream);
       }
       video.play();
+      explanation.innerHTML = 'Position your face so that the red line ' +
+        'divides it in half. ' +
+        'Then press <code>&lt;SPACE&gt;</code> to take a snapshot';
+
+      document.body.addEventListener('keydown', onKeydown);
     },
     function(err) {
       console.log("An error occured! " + err);
@@ -179,8 +182,6 @@
       stream.takeSnapshot();
     });
   }
-
-  document.body.addEventListener('keydown', onKeydown);
 
   function onKeydown(event) {
     switch (event.keyCode) {
