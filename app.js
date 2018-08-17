@@ -86,7 +86,6 @@
     this.el.setAttribute('download', 'snapshot.png');
     this.el.setAttribute('title', 'Click to download');
     this.el.innerHTML = '&starf;';
-    // this.el.addEventListener('click', onSave);
   }
 
   function Photo(src) {
