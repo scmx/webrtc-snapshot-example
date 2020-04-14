@@ -127,7 +127,7 @@
         video.mozSrcObject = stream;
       } else {
         var vendorURL = window.URL || window.webkitURL;
-        video.src = vendorURL.createObjectURL(stream);
+        video.srcObject = stream
       }
       video.play();
       explanation.innerHTML = 'Position your face so that the red line ' +
