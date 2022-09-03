@@ -92,6 +92,31 @@ class SaveButton {
   }
 }
 
+class PlayButton {
+  constructor() {
+    this.el = document.createElement('button');
+    this.el.classList.add('PlayButton')
+    this.el.innerHTML = `&#9654;`
+    this.el.onclick = () => {
+      try {
+        video.play();
+        this.hide();
+      } catch (err) {
+        console.warn(err);
+      }
+    }
+    this.hide();
+  }
+
+  hide() {
+    this.el.style.display = 'none';
+  }
+
+  show() {
+    this.el.style.display = 'initial';
+  }
+}
+
 class Photo {
   constructor(src) {
     this.el = document.createElement('img');
@@ -100,6 +125,8 @@ class Photo {
 }
 
 const streamContainer = new StreamContainer();
+const playButton = new PlayButton();
+document.body.appendChild(playButton.el)
 
 function init() {
   const explanation = document.createElement('div');
@@ -123,7 +150,12 @@ function init() {
     (stream) => {
       video.srcObject = stream
       video.onloadedmetadata = () => {
-        video.play();
+        try {
+          video.play();
+        } catch (err) {
+          playButton.show();
+          console.warn(err);
+        }
       };
 
       explanation.innerHTML = 'Position your face so that the red line ' +

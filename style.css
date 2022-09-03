@@ -8,12 +8,18 @@ body {
   font-size: 15pt;
   text-align: center;
 }
-.Explanation code { color: #09cdda; }
+.Explanation code {
+  color: #09cdda;
+}
 .Stream {
   position: relative;
   width: 33%;
   min-height: 100%;
   margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 #left {
   float: left;
@@ -22,15 +28,17 @@ body {
 #middle {
   margin: 0 auto;
 }
-#middle video { display: none; }
+#middle video {
+  display: none;
+}
 #right {
   float: right;
 }
 .Line {
-  z-index: 999;
+  z-index: 5;
   position: absolute;
   top: 0;
-  left: 160px;
+  left: 50%;
   width: 0;
   height: 240px;
   border-right: 1px solid red;
@@ -50,8 +58,6 @@ body {
   height: 16px;
   font-family: sans-serif;
 }
-.Snapshot:hover .Button {
-}
 .Snapshot img {
   width: 320px;
   height: 240px;
@@ -68,7 +74,7 @@ body {
   text-align: left;
 }
 .CloseButton:after {
-  content: 'Remove';
+  content: "Remove";
   display: none;
   font-weight: normal;
 }
@@ -88,7 +94,7 @@ body {
   color: gold;
 }
 .SaveButton:after {
-  content: 'Download';
+  content: "Download";
   display: none;
 }
 .SaveButton:hover:after {
@@ -96,6 +102,22 @@ body {
   position: absolute;
   top: 4px;
   right: 20px;
+}
+.PlayButton {
+  position: absolute;
+  left: 50%;
+  top: 160px;
+  z-index: 10;
+  border: 1px solid black;
+  border-radius: 4px;
+  width: 32px;
+  height: 32px;
+  font-size: 32px;
+  line-height: 32px;
+  margin-left: -16px;
+  margin-right: -16px;
+  padding: 0;
+  text-align: center;
 }
 canvas {
   -moz-transform: scale(-1, 1);
