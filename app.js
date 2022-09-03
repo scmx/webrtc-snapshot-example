@@ -5,7 +5,7 @@ const height = 240;
 
 class StreamContainer {
   constructor() {
-    this.el = document.body;
+    this.el = document.createElement('div');
     this.streams = [];
   }
   append(stream) {
@@ -105,7 +105,7 @@ class PlayButton {
         console.warn(err);
       }
     }
-    this.hide();
+    // this.hide();
   }
 
   hide() {
@@ -124,21 +124,23 @@ class Photo {
   }
 }
 
+const explanation = document.createElement('div');
 const streamContainer = new StreamContainer();
 const playButton = new PlayButton();
+
+document.body.appendChild(explanation);
+document.body.appendChild(streamContainer.el);
 document.body.appendChild(playButton.el)
+document.body.appendChild(video);
 
 function init() {
-  const explanation = document.createElement('div');
   explanation.classList.add('Explanation');
 
   if (navigator.mediaDevices.getUserMedia) {
     explanation.innerHTML = 'You need to allow this page to use your camera';
-    document.body.appendChild(explanation);
   } else {
     explanation.innerHTML = 'Sorry, your browser does not support ' +
       '<code>window.navigator.getUserMedia</code>';
-    document.body.appendChild(explanation);
     return;
   }
 
@@ -149,20 +151,20 @@ function init() {
   navigator.mediaDevices.getUserMedia({ video: true, audio: false }).then(
     (stream) => {
       video.srcObject = stream
-      video.onloadedmetadata = () => {
-        try {
-          video.play();
-        } catch (err) {
-          playButton.show();
-          console.warn(err);
-        }
-      };
+      // video.onloadedmetadata = () => {
+      //   try {
+      //     video.play();
+      //   } catch (err) {
+      //     playButton.show();
+      //     console.warn(err);
+      //   }
+      // };
 
       explanation.innerHTML = 'Position your face so that the red line ' +
         'divides it in half. ' +
         'Then press <code>&lt;SPACE&gt;</code> to take a snapshot';
 
-      document.body.addEventListener('keydown', onKeydown);
+      addEventListener('keydown', onKeydown);
     },
     function(err) {
       console.log("An error occured! " + err);
