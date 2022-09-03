@@ -1,7 +1,11 @@
 let streaming = false;
-const video = document.createElement('video');
+
 const width = 320;
 const height = 240;
+
+const video = document.createElement('video');
+video.playsInline = true
+video.style.display = 'none';
 
 class StreamContainer {
   constructor() {
