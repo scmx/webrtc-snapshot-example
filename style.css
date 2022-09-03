@@ -2,6 +2,11 @@ body {
   overflow-x: hidden;
   overflow-y: scroll;
   background: #eef;
+  touch-action: manipulation;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 .Explanation {
   padding: 10px;
@@ -118,6 +123,35 @@ body {
   margin-right: -32px;
   padding: 0;
   text-align: center;
+}
+.ShutterButton {
+  position: fixed;
+  bottom: clamp(60px, 10%, 96px);
+  left: 50%;
+  width: 64px;
+  height: 64px;
+  border: 6px solid white;
+  border-radius: 100%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  transform: translateX(-50%);
+  background: black;
+}
+.ShutterButton::after {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  right: 2px;
+  bottom: 2px;
+  content: '';
+  border-radius: 100%;
+  background-color: white;
+  transition: all 0.3s ease;
+}
+.ShutterButton:active::after {
+  top: 4px;
+  left: 4px;
+  right: 4px;
+  bottom: 4px;
 }
 canvas {
   -moz-transform: scale(-1, 1);

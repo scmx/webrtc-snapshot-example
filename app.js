@@ -101,15 +101,7 @@ class PlayButton {
     this.el = document.createElement('button');
     this.el.classList.add('PlayButton')
     this.el.innerHTML = `&#9654;`
-    this.el.onclick = () => {
-      try {
-        video.play();
-        this.hide();
-      } catch (err) {
-        console.warn(err);
-      }
-    }
-    // this.hide();
+    this.el.onclick = () => play()
   }
 
   hide() {
@@ -118,6 +110,16 @@ class PlayButton {
 
   show() {
     this.el.style.display = 'initial';
+  }
+}
+
+class ShutterButton {
+  constructor() {
+    this.el = document.createElement('button');
+    this.el.classList.add('ShutterButton')
+    this.el.onclick = () => {
+      takepicture();
+    }
   }
 }
 
@@ -130,11 +132,23 @@ class Photo {
 
 const explanation = document.createElement('div');
 const streamContainer = new StreamContainer();
+const shutterButton = new ShutterButton();
 const playButton = new PlayButton();
+
+function play() {
+  try {
+    video.play();
+    playButton.hide();
+    shutterButton.show();
+  } catch (err) {
+    console.warn(err);
+  }
+}
 
 document.body.appendChild(explanation);
 document.body.appendChild(streamContainer.el);
 document.body.appendChild(playButton.el)
+document.body.appendChild(shutterButton.el);
 document.body.appendChild(video);
 
 function init() {
@@ -155,14 +169,9 @@ function init() {
   navigator.mediaDevices.getUserMedia({ video: true, audio: false }).then(
     (stream) => {
       video.srcObject = stream
-      // video.onloadedmetadata = () => {
-      //   try {
-      //     video.play();
-      //   } catch (err) {
-      //     playButton.show();
-      //     console.warn(err);
-      //   }
-      // };
+      video.onloadedmetadata = () => {
+        play();
+      };
 
       explanation.innerHTML = 'Position your face so that the red line ' +
         'divides it in half. ' +
@@ -218,8 +227,9 @@ function takepicture() {
 }
 
 function onKeydown(event) {
-  switch (event.keyCode) {
-    case 32: event.preventDefault(); takepicture(); break;
+  if (event.key === ' ') {
+    event.preventDefault();
+    takepicture();
   }
 }
 
